@@ -1,23 +1,33 @@
 <template>
   <div >
     <h1>Usuario</h1>
-    <TarjetaUsuarioVue :id="usuario.id"
-                       :nombre="usuario.name"
-                       :correo="usuario.email"
-                       :Telefono="usuario.phone"
-                       :Sitio="usuario.website"></TarjetaUsuarioVue>
+    <TarjetaUsuarioVue :id=this.id
+                    :nombre=this.name
+                    :correo=this.email
+                    :Telefono=this.phone
+                    :Sitio=this.website></TarjetaUsuarioVue>
+
+    <ul id="informacion">
+      <li v-for="info in infos" :key="info.id" >
+        <strong>ID:</strong> {{ info.id }} <br />
+        <strong>Título:</strong> {{ info.title }} <br />
+        <strong>Cuerpo:</strong> {{ info.body }} <br />
+        <hr />
+      </li>
+    </ul>
+    <hr/>
  </div>
 </template>
 
 <script>
-import TarjetaUsuarioVue from '../components/TarjetaUsuario.vue'
+import TarjetaUsuarioVue from '@/components/TarjetaUsuario'
 export default {
-  props: ['id'],
+  props: ['id', 'name', 'email', 'phone', 'website'],
   name: 'Usuario',
   components: { TarjetaUsuarioVue },
   data () {
     return {
-      usuario: null
+      infos: null
     }
   },
   mounted () {
@@ -25,15 +35,14 @@ export default {
   },
   methods: {
     async getPost () {
-      try {
-        const { data } = await this.$http.get(
-          `https://jsonplaceholder.typicode.com/users/${this.id}`
-        )
-        this.usuario = data
-        console.log(data)
-      } catch (error) {
-        console.log(error)
-      }
+      this.$http
+        .get(`https://jsonplaceholder.typicode.com/users/${this.id}/posts`)
+        .then((response) => {
+          this.infos = response.data
+        })
+        .catch((error) => {
+          console.log(error)
+        })
     }
   }
 }

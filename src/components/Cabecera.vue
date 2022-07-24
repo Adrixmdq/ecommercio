@@ -5,7 +5,6 @@
         <h2>
             <router-link to="/">Home</router-link> |
             <router-link to="/listado">Listar usuarios</router-link> |
-            <router-link to="/usuario">usuario</router-link>
        </h2>
      </div>
   </nav>

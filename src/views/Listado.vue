@@ -4,7 +4,8 @@
     <div class="container" background = "green" v-for="dato in datos" :key="dato.id">
          <strong>Nombre:</strong> {{ dato.name}} <br />
          <strong>Correo:</strong> {{ dato.email}} <br />
-        <router-link  bg-dark bg-gradient :to="{ name: 'Usuario',  params: { id: dato.id }}"
+        <router-link  bg-dark bg-gradient :to="{ name: 'Usuario',
+           params: { id: dato.id, name: dato.name,  email: dato.email, phone: dato.phone,  website:dato.website}}"
            ><strong> Otros datos de {{ dato.name }}</strong></router-link >
            <br/>
            <hr/>

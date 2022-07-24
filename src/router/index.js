@@ -19,7 +19,7 @@ const routes = [
     component: Listado
   },
   {
-    path: '/Usuario/:id',
+    path: '/Usuario/:id/:name/:email/:phone/:website',
     name: 'Usuario',
     component: Usuario,
     props: true

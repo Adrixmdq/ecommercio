@@ -1,11 +1,13 @@
 <template>
-  <div >
-      <strong>Nombre:</strong> {{ nombre}} <br />
-      <strong>Correo:</strong> {{ correo}} <br />
-      <strong>Teléfono:</strong> {{ Telefono}} <br />
+  <div>
+      <strong>  ID:</strong> {{ id}}
+      <strong>  Nombre:</strong> {{ nombre}}
+      <strong>  Correo:</strong> {{ correo}}
+      <strong>  Teléfono:</strong> {{ Telefono}} <br />
       <a :href="`https://${Sitio}`" target="_blank">
           {{nombre}} Página web
         </a>
+        <hr/>
      </div>
 </template>
 
@@ -13,7 +15,7 @@
 export default {
   name: 'TarjetaUsuario',
   props: {
-    id: Number,
+    id: String,
     nombre: String,
     correo: String,
     Telefono: String,
