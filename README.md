@@ -1,4 +1,4 @@
-# ecommercio
+# ecomercio
 
 ## Project setup
 ```
